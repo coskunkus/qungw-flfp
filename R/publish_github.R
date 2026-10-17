@@ -1,7 +1,7 @@
 ###############################################################################
-## publish_github.R  -  publishes the code (R/) with README.md, LICENSE,
-## .gitignore and .gitattributes to GitHub. Data, results and the manuscript
-## stay local.
+## publish_github.R  -  publishes the code (R/) and the data (data/) with
+## README.md, LICENSE, .gitignore and .gitattributes to GitHub. The results and
+## the manuscript stay local; anyone who clones reproduces them with run_all.R.
 ##
 ## Before the first run: create an EMPTY repository named qungw-flfp on GitHub
 ## (no README, no licence) and set GH_USER below. git must be installed and
@@ -46,15 +46,16 @@ setwd(old)
 if (fresh) { unlink(STAGE, recursive = TRUE); STAGE <- tempfile(paste0(REPO, "_")); dir.create(STAGE) }
 cat(if (fresh) "Creating a new history.\n" else "Adding a commit to the existing history.\n")
 ## replace the tracked content with the current files
-## only the code is published: R/ and the repository files at the top level
+## the code and the data are published: R/, data/ and the repository files
 for (d in c("R", "data", "results")) unlink(file.path(STAGE, d), recursive = TRUE)
-dir.create(file.path(STAGE, "R"))
+dir.create(file.path(STAGE, "R")); dir.create(file.path(STAGE, "data"))
 copy_set <- function(from, pattern, to) {
   fs <- list.files(from, pattern = pattern, full.names = TRUE)
   if (!length(fs)) stop("no files found in ", from)
   if (!all(file.copy(fs, file.path(STAGE, to), overwrite = TRUE))) stop("copying ", from, " failed")
   cat(sprintf("  %-8s %3d files\n", to, length(fs))) }
 copy_set(".", "\\.R$", "R")
+copy_set("../data", "\\.(csv|txt)$", "data")
 for (f in c("README.md", "LICENSE", ".gitignore", ".gitattributes"))
   if (!file.copy(file.path("..", f), STAGE, overwrite = TRUE)) stop("copying ", f, " failed")
 

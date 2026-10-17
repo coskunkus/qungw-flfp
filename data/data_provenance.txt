@@ -1,0 +1,31 @@
+DATA PROVENANCE RECORD
+----------------------------------------------------------------
+Extracted on          : 2026-08-20 09:09:08 +03
+Reference year        : 2023
+Source                : World Bank World Development Indicators
+Response series origin: ILO modelled estimates, ILOSTAT
+API endpoint pattern  : https://api.worldbank.org/v2/country/all/indicator/<CODE>?date=2023&format=json&per_page=400
+Licence               : WDI is released under CC BY 4.0
+R version             : R version 4.5.2 (2025-10-31 ucrt)
+jsonlite version      : 2.0.0
+
+Indicators requested:
+  flfp      SL.TLF.CACT.FE.ZS    -> y        n non-missing = 184   obtained 2026-08-20
+  fert      SP.DYN.TFRT.IN       -> fert     n non-missing = 184   obtained 2026-08-20
+  urb       SP.URB.TOTL.IN.ZS    -> urb      n non-missing = 184   obtained 2026-08-20
+  dep       SP.POP.DPND          -> dep      n non-missing = 184   obtained 2026-08-20
+  gdppc     NY.GDP.PCAP.PP.KD    -> lgdppc   n non-missing = 172   obtained 2026-08-20
+  serv_f    SL.SRV.EMPL.FE.ZS    -> serv_f   n non-missing = 184   obtained 2026-08-20
+  internet  IT.NET.USER.ZS       -> internet n non-missing = 165   obtained 2026-08-20
+  educ_f    SE.SEC.ENRR.FE       -> educ_f   n non-missing = 125   obtained 2026-08-20
+
+DATA VINTAGE (cache dates): 2026-08-20 to 2026-08-20
+This, not the run date above, is when the numbers were obtained
+from the World Bank. Cite it in the paper.
+
+Economies with an observed response      : 184
+ESTIMATION SAMPLE, y + fert + lgdppc     : 172   <-- n reported in the paper
+Complete cases on all 8 variables        : 119   (the wider set, rejected)
+
+Aggregates (regional and income groupings) were removed before analysis.
+----------------------------------------------------------------
