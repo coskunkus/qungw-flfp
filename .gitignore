@@ -1,0 +1,11 @@
+.Rhistory
+.RData
+.Rproj.user/
+latex/
+*.pdf
+*.eps
+*.png
+!results/*.pdf
+!results/*.eps
+!results/*.png
+data/wdi_cache/
